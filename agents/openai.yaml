@@ -1,0 +1,6 @@
+interface:
+  display_name: "Menu Generator"
+  short_description: "Turn dish photos into refined 3:4 fine-dining menu visuals"
+  default_prompt: "Use $menu-generator to turn my uploaded dish photo into a refined 3:4 Chinese restaurant menu."
+policy:
+  allow_implicit_invocation: true
