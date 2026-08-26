@@ -8,11 +8,15 @@
 
 ## 效果预览
 
-示例图将放在 `examples/` 目录中，计划覆盖：
+以下配图均由 `menu-generator` 的实际工作流生成，并压缩为适合 GitHub README 浏览的 3:4 预览图。
 
-- 主菜 · Editorial Dish Menu
-- 甜点 · Ingredient Story Menu
-- 咖啡或鸡尾酒 · Pairing Menu
+| 食品 · Starter | 饮品 · Hōjicha | 饮品 · Cocktail |
+|---|---|---|
+| ![食品菜单示例：鲜切鱼肉脆盏](examples/food-starter.webp) | ![饮品菜单示例：香料焙茶拿铁](examples/beverage-hojicha.webp) | ![鸡尾酒菜单示例：银座](examples/beverage-cocktail.webp) |
+
+- 食品示例使用“菜品身份 / 用餐提示 / 推荐搭配”分区，内部横线完整连接左右外框，不使用风味刻度。
+- 饮品示例保留独立器皿，并使用饮品专属的紧凑风味线系统。
+- 所有示例都采用暖色留白背景、确定性文字排版和完整四边信息框。
 
 ## 核心能力
 
@@ -101,6 +105,10 @@ git clone https://github.com/sxt417/menu-generator.git ~/.codex/skills/menu-gene
 ```text
 menu-generator/
 ├── SKILL.md
+├── examples/
+│   ├── beverage-cocktail.webp
+│   ├── beverage-hojicha.webp
+│   └── food-starter.webp
 ├── agents/
 │   └── openai.yaml
 └── references/
