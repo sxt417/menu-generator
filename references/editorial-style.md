@@ -12,9 +12,9 @@ The food must remain the first visual read. Type and decoration support it at a 
 
 - Plate and bowl hero scale: the complete vessel with food should occupy approximately 62–70% of canvas width and 30–38% of canvas height. Treat 72% width or 40% height as the correction threshold unless a close crop was requested. Standalone beverages use the smaller approved scale in [beverage-layout.md](beverage-layout.md).
 - Negative space: approximately 55–68% for plates and bowls and broader for the approved beverage layout.
-- Framed information block width: generally 24–32% of canvas width; expand only when Chinese legibility requires it.
+- Framed information block width: generally 24–32% of canvas width; expand only when legibility in the selected menu language requires it.
 - Outer margins: about 80–110 px on a 1024–1086 px-wide canvas; scale proportionally.
-- Typical relationship: micro brand/menu label at upper right, light information block at upper-left or upper-middle, enlarged hero dish across the lower half, and optional micro-label near an edge. Reposition the information block when needed instead of shrinking the food back to a distant scale.
+- Typical relationship: the subject-appropriate upper-right identity cluster, a light information block at upper-left or upper-middle, the enlarged hero dish across the lower half, and at most one supported micro-label near an edge. Reposition the information block when needed instead of shrinking the food back to a distant scale.
 - Allow slight asymmetry. Avoid a rigid centered stack, excessive alignment, or a fully occupied upper half.
 
 If the page feels crowded, remove information or decoration before shrinking text. If the information block competes with the food, reduce its size, fill opacity, border contrast, or content.
@@ -26,22 +26,22 @@ If the page feels crowded, remove information or decoration before shrinking tex
 - Use the supplied restaurant display name verbatim; if it was not supplied, ask for it before composing.
 - Place the restaurant name at the top of the upper-right identity cluster. At 1536 px canvas width, begin around 26–32 px, weight 650–700, and adjust only for name length. It should be visibly larger and bolder than the category but remain subordinate to the dish title and hero.
 - Put one concise professional category directly below, normally in tracked uppercase English: `STARTER`, `MAIN COURSE`, `SIDE`, `DESSERT`, `COCKTAIL`, `COFFEE`, `TEA`, or `NON-ALCOHOLIC`, chosen from the actual subject. Never use `SIGNATURE` or `SEASONAL` as a substitute unless that status is supported separately.
-- Center the restaurant name, category, optional short hairline, and optional item index on exactly one shared axis. Use `text-anchor: middle` or an equivalent deterministic alignment method; do not eyeball separate left offsets.
-- Do not place a duplicate Chinese category above the restaurant name. A Chinese category may appear elsewhere only when it carries necessary primary information.
-- Standalone beverages override the category pattern: use restaurant name → short black hairline → English item name, centered on one axis. Omit the category and any `DRINK / 01`-style index unless the user explicitly requests them. See [beverage-layout.md](beverage-layout.md).
+- Center the restaurant name and category on exactly one shared axis. Use `text-anchor: middle` or an equivalent deterministic alignment method; do not add an index, slogan, subtitle, or decorative metadata in their place.
+- Do not place a duplicate localized category above the restaurant name. A localized category may appear elsewhere only when it carries necessary primary information.
+- Standalone beverages override the category pattern: use restaurant name → short black hairline → selected-language item name, centered on one axis. Omit the category and every menu or item index unless the user explicitly requests a numbering system. See [beverage-layout.md](beverage-layout.md).
 
-### Chinese title
+### Primary-language title
 
 - Use medium or restrained semibold weight, normally 500–600; never ultra-bold.
 - At 1024–1086 px canvas width, start around 34–48 px and scale to the composition. Prefer smaller when the title is long or enclosed by the information frame.
 - Line height: 1.15–1.25. Letter spacing: around -0.02em unless the selected CJK font renders poorly with negative tracking.
 - Use warm near-black such as `#2B2A28`, `#35322E`, or `#3A342F`, not pure black.
-- Prefer Source Han Sans SC, Noto Sans SC, MiSans, HarmonyOS Sans SC, Alibaba PuHuiTi, or an available equivalent. A medium Source Han Serif SC or Noto Serif SC title may be paired with sans-serif body text when it improves the cuisine mood.
+- For Chinese, prefer Source Han Sans SC, Noto Sans SC, MiSans, HarmonyOS Sans SC, Alibaba PuHuiTi, or an available equivalent. A medium Source Han Serif SC or Noto Serif SC title may be paired with sans-serif body text when it improves the cuisine mood. For English, prefer Helvetica Neue, Neue Haas Grotesk, Inter, Suisse Intl, or an available equivalent; reduce tracking on long names and preserve natural word spacing.
 
-### English subtitle
+### Secondary-language alias
 
 - Treat it as a label, not a second headline.
-- Use uppercase, 12–14 px, weight 400–500, tracking 0.16–0.20em, and warm gray near `#7E776F` on a 1024–1086 px-wide canvas.
+- When it is English, use uppercase, 12–14 px, weight 400–500, tracking 0.16–0.20em, and warm gray near `#7E776F` on a 1024–1086 px-wide canvas. When it is Chinese, use restrained spacing rather than forced Latin-style tracking.
 
 ### Description
 
@@ -51,7 +51,7 @@ If the page feels crowded, remove information or decoration before shrinking tex
 
 ### Metadata labels and values
 
-- Labels such as 主要食材, 用餐提示, 推荐搭配, or beverage flavor labels: 11–13 px, warm gray near `#8E867E`, tracking 0.04–0.08em.
+- Localized labels such as `主要食材`, `用餐提示`, `推荐搭配`, `MAIN INGREDIENT`, `DINING TIP`, `RECOMMENDED DRINK`, or beverage flavor labels: 11–13 px, warm gray near `#8E867E`, with language-appropriate tracking.
 - Values: 15–17 px, weight 400–500, near `#35322E`.
 - Labels must never be darker, larger, or heavier than the description.
 
@@ -74,7 +74,9 @@ Avoid a dashboard card, large opaque rectangle, dense table, or form-like rows. 
 一至三种可信的酒水类别
 ```
 
-Food cards never contain sensory baselines, ticks, markers, `Level`, or a flavor chart. Read [food-layout.md](food-layout.md) for content and evidence rules.
+Food and dessert cards never contain sensory baselines, ticks, markers, `Level`, numeric scales, radar graphics, or a structured flavor chart. Read [food-layout.md](food-layout.md) for content and evidence rules.
+
+For an English version, use the same geometry with `ITEM NAME`, an English description, `DINING TIP`, and `RECOMMENDED DRINK`. Do not retain essential Chinese copy or produce a bilingual card unless the user explicitly asks for bilingual output.
 
 ### Beverage pattern · Recipe and flavor profile
 
@@ -119,7 +121,7 @@ Body   ─┼─●─┼─┼─┼─
 
 Use at most two types of micro-detail on a page:
 
-- a small numbering label such as `MENU / 01`, `PLATE / 01`, `No. 01`, `HOUSE SPECIAL`, or `CHEF'S NOTE`;
+- a numbering label only when the user explicitly requested a numbering system;
 - one short, hairline accent near a title, information block, or page edge;
 - a tiny English annotation such as `MAIN COURSE`, `PAIRING`, `MAIN INGREDIENT`, `SEASONAL PLATE`, or `CHEF'S RECOMMENDATION`;
 - one or two ingredient labels such as `MAIN INGREDIENT : GRAVY` or `PAIRING : ICED BLACK TEA`.
@@ -128,9 +130,9 @@ Keep these details small and secondary. Any drawn line, including a micro accent
 
 ## Supporting objects
 
-Add zero to three small supporting objects only when they strengthen ingredient or pairing logic. An ingredient explicitly supplied by the user or printed in the source is valid evidence for an external physical cue. Valid examples include one recognizable blossom, leaf, bud, fruit slice, herb sprig, a small sauce cup, a few pepper grains, one glass of the recommended drink, a minimal silver fork, a corner of white napkin, or a small amount of verified raw ingredient. For flower-, leaf-, or bud-led items, one intact specimen or short natural stem is normally enough; for a butterfly-pea drink, one true butterfly-pea blossom may rest beside—but not touch—the glass. Use two or three pieces only when a small group is more natural, such as cinnamon sticks. Match scale, camera, surface contact, shadow, and light direction, and do not substitute a generic decorative flower for the named ingredient.
+Add zero to three small supporting objects. Every object must have a clear ingredient, pairing, or service rationale and must be supported by at least one of: visible source evidence, explicit user-provided information, a selected ingredient module, a selected pairing module, or necessary service context directly related to the item. Valid examples include a supported ingredient or spice, a supported sauce, the selected pairing drink, or a necessary service utensil. Purely decorative props are prohibited. Do not add unrelated flowers, fabrics, plants, bottles, containers, or utensils, and do not add anything only to fill negative space or make the scene feel richer. Match scale, camera, surface contact, shadow, and light direction. The total number of supporting objects must never exceed three.
 
-Keep the scene sparse. Do not turn it into lifestyle photography, a full table setting, or a collection of props. The hero dish must remain absolutely dominant. Do not add any object whose identity or relationship cannot be justified from the dish or user information.
+Keep the scene sparse. Do not turn it into lifestyle photography, a full table setting, or a collection of props. The hero dish must remain absolutely dominant. Visual quality must come from controlled execution inside the existing system, not from unsupported decoration.
 
 ## Color
 
@@ -156,7 +158,7 @@ Aim for a quiet premium editorial still life: soft studio light, delicate tonal 
 
 Before delivery, correct these failure modes:
 
-- Oversized or overly bold Chinese title: reduce size and weight.
+- Oversized or overly bold primary-language title: reduce size and weight.
 - Hero dish or drink feels too small or distant: enlarge it toward the middle of the subject-specific range while keeping the complete vessel and required information legible.
 - A plate or bowl exceeds 72% of canvas width or 40% of canvas height, becomes clipped, or overwhelms the information: make a scale-only correction that reduces the complete vessel, food, integral garnish, sauce, and contact shadow together. Start around 20%, preserve its center and camera relationship, then remeasure the raster against the 62–70% width and 30–38% height target.
 - Missing frame: add the compact black hairline frame before delivery. For food, remove any flavor chart and use evidence-based dining-tip or drink-pairing sections when useful; make every section divider meet both vertical borders. For standalone beverages, add the required three or four flavor rows.
